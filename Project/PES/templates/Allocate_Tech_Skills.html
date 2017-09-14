@@ -1,0 +1,67 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+
+{%block divbody %}
+<div class="contentpanel  ">
+<center>
+    <h2>Allocate Technical Skills</h2>
+</center>
+<strong><a href="home" style="font-size:20px">Back</a></strong>
+<form id="Register" method="post" class="for" enctype="multipart/form-data" action="alloctech">
+    <table class="table dataTable col-md-4">
+        <tr>
+            <td>Department: </td>
+            <td>
+                <select name="dropdept">
+                    {% for i in dept %}
+                    <option value="{{i.id}}">{{i.DepartmentName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Designation: </td>
+            <td>
+                <select name="dropdesg">
+                    {% for i in desg %}
+                    <option value="{{i.id}}">{{i.DesignationName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Technical Skill: </td>
+            <td>
+                <select name="droptech">
+                    {% for j in tech %}
+                    <option value="{{j.id}}">{{j.SkillName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Threshold: </td>
+            <td>
+                <select name="dropthresh">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <center>
+                    <input type="submit" name="Add" value="Submit" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-primary" />
+            </center>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

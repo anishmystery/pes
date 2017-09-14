@@ -1,0 +1,44 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+
+{%block divbody %}
+<center>
+    <h2>Allocate Manager<a id="openDialog" style="font-size:20px;position:relative ;left:400px;" href="~/Admin/IndexComp"></a></h2>
+</center>
+<strong><a href="home" style="font-size:20px">Back</a></strong>
+<form id="Register" method="post" class="for" enctype="multipart/form-data" action="allocmgr">
+    <table class="table dataTable col-md-4">
+        <tr>
+            <td>Employee: </td>
+            <td>
+                <select name="dropemp">
+                    {% for i in emp %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Manager: </td>
+            <td>
+                <select name="dropmgr">
+                    {% for i in mgr %}
+                    <option value="{{i.id}}">{{i.Name}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <center>
+                    <input type="submit" name="Add" value="Submit" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-primary" />
+            </center>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

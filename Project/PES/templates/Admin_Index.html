@@ -1,0 +1,45 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+<center>
+    <h2>
+    	Employee List
+    </h2>
+</center>
+    <div class="contentpanel" align="center">
+    	<div>
+    	<table class="col-md-12 col-sm-12" border="1">
+    		<tr>
+    			<th>Employee Code</th>
+    			<th>Name</th>
+    			<th>Email</th>
+    			<th>Mobile</th>
+    			<th>Gender</th>
+    			<th>Date of Birth</th>
+    			<th>City</th>
+    			<th>State</th>
+    			<th>Designation</th>
+				<th>Department</th>
+				<th></th>
+    		</tr>
+    		{% for i in records %}
+    			<tr>
+    				<td>{{ i.EmployeeCode }}</td>
+    				<td>{{ i.Name }}</td>
+    				<td>{{ i.Email }}</td>
+    				<td>{{ i.Mobile }}</td>
+    				<td>{{ i.Gender }}</td>
+    				<td>{{ i.DOB }}</td>
+    				<td>{{ i.CityName }}</td>
+    				<td>{{ i.StateName }}</td>
+    				<td>{{ i.DesignationName }}</td>
+					<td>{{ i.DepartmentName }}</td>
+					<td><a href="deactivate={{i.id}}">Deactivate</a></td>
+    			</tr>
+    		{% endfor %}
+    	</table>
+    	</div>
+    </div>
+{%endblock%} 

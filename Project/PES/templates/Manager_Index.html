@@ -1,0 +1,25 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+<center>
+    <h2>Manager List<a id="openDialog" style="font-size:20px;position:relative ;left:400px;" href="~/Admin/IndexComp"></a></h2>
+</center>
+<div class="contentpanel" align="center">
+    <div>
+    <table border="1" width="50%">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+        {% for i in mgr %}
+            <tr>
+                <td>{{ i.Name }}</td>
+                <td>{{ i.DepartmentName }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}

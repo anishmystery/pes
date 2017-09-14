@@ -1,0 +1,47 @@
+{% extends 'Master_Employee.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+
+{%block divbody %}
+<div class="contentpanel">
+<center>
+    <h2>Allocate Additional Skills</h2>
+</center>
+<strong><a href="emp" style="font-size:20px">Back</a></strong>
+<form id="Register" method="post" class="for" enctype="multipart/form-data" action="allocaddt">
+    <table class="table dataTable col-md-4">
+        <tr>
+            <td>Skill: </td>
+            <td>
+                <select name="dropskill">
+                    {% for j in sk %}
+                    <option value="{{j.Skill_id}}">{{j.SkillName}}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Threshold: </td>
+            <td>
+                <select name="dropthresh">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+            <center>
+                    <input type="submit" name="Add" value="Submit" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-primary" />
+            </center>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock %}

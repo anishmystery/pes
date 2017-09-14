@@ -1,0 +1,208 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+    <div class="contentpanel">
+        <center>
+            <h2>Add Employee</h2>
+        </center>
+        <strong><a href="~/templates/Admin_Index.html" style="font-size:20px">Back</a></strong>
+
+        <form name="register" id="Register" method="post" class="for" enctype="multipart/form-data" action="detailsemp">
+            <table class="table dataTable col-md-4">
+                <tr>
+                    <td>Employee Code</td>
+                    <td><input type="text" name="ecode"/></td>
+                    <td>Profile Image</td>
+                    <td><input type="file" name="profpic"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="ename"/></td>
+                    <td>Designation</td>
+                    <td>
+                    <select name="dropdesg">
+                        {% for i in desg %}
+                            <option value="{{i.id}}">{{i.DesignationName}}</option>
+                        {% endfor %}    
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Gender
+                    </td>
+                    <td><input type="radio" name="gen" value="Male">Male  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="gen" value="Female">Female
+                    </td>
+                    <td>Department</td>
+                    <td>
+                    <select name="dropdept">
+                        {% for i in dept %}
+                            <option value="{{i.id}}">{{i.DepartmentName}}</option>
+                        {% endfor %}
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    Date Of Birth
+                    </td>
+                    <td>
+                    <input type="text" name="dob" id="dob">
+                    </td>
+                    <td>JoiningDate </td>
+                    <td><input type="text" name="join" id="join"></td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td><textarea name="addr" rows="5" cols="30"></textarea></td>
+                    <td>  Pincode </td>
+                    <td> <input type="text" name="pin"/></td>
+                </tr>
+                <tr>
+                    <td>City</td>
+                    <td>
+                    <select name="dropcity">
+                        {% for i in city %}
+                            <option value="{{i.id}}">{{i.CityName}}</option>
+                        {% endfor %}
+                    </select>
+                    </td>
+                    <td>  MobileNo(+91) </td>
+                    <td><input type="text" name="mob"/></td>
+                </tr>
+                <tr>
+                    <td>State </td>
+                    <td>
+                    <select name="dropstate">
+                        {% for i in state %}
+                            <option value="{{i.id}}">{{i.StateName}}</option>
+                        {% endfor %}
+                    </select>
+                    </td>
+                    <td>  Email Id </td>
+                    <td><input type="text" name="email"/></td>
+                </tr>
+                
+                <tr>
+                    <td>IsAdmin </td>
+                    <td><input type="checkbox" name="adm" value="1"></td>
+                    <td>Password</td>
+                    <td><input type="password" name="pw"></td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                    <center>
+                            <input type="submit" name="Add" value="Submit" class="btn btn-primary" />
+                            <input type="reset" value="Reset" class="btn btn-primary" />
+                    </center>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function () {
+        $("form[name='register']").validate({
+            rules: {
+                //EmployeeCode:"required",
+                ecode: {
+                    required: true,
+                    maxlength: 5,
+                    minlength: 1,
+                    digits : true,
+                },
+                ename: {
+                    accept : '[a-z A-Z]',
+                    required: true,
+                    maxlength: 20,
+                    minlength: 3,
+                    //lettersonly: true
+                },
+                mob: {
+                    number: true,
+                    required: true,
+                    digits: true,
+                    minlength: 10,
+                    maxlength: 10
+                },
+
+                email: {
+                    required: true,
+                    email: true
+
+                },
+
+                addr: {
+                    required: true,
+                    maxlength: 100,
+                    minlength: 10
+                },
+
+                pin: {
+                    required: false,
+                    digits: true,
+                    maxlength: 6,
+                    minlength: 6
+                },
+                dob:{
+                    required: true
+                },
+                join: {
+                    required: true
+                },
+
+                dropcity: {
+                    required: true
+                },
+                dropstate: {
+                    required: true
+                },
+                dropdept: {
+                    required: true
+                },
+                dropdesg: {
+                    required: true
+                },
+                pw : {
+                    required: true
+                }
+            },
+            messages: {
+                dropcity: "Select appropriate City.",
+                dropstate: "Select appropriate State.",
+                dropdept: "Select appropriate Department.",
+                dropdesg: "Select appropriate Designation.",
+                ename: "Use only Alphabets.",
+            }
+        });
+    });
+
+    $(function () {
+
+
+
+        $("#dob").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            yearRange:'-60:-20'
+        });
+    });
+
+    $(function () {
+        $("#join").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            yearRange: '-30:+0'
+        });
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+<center>
+    <h2>Technical Skills List<a style="font-size:20px;position:relative ;left:400px;" href="addtech">Add Technical Skills</a></h2>
+</center>
+	<div class="contentpanel" align="center">
+    	<div>
+    	<table border="1" width="50%">
+    		<tr>
+    			<th>Technical Skills</th>
+    		</tr>
+    		{% for i in rec_tech %}
+    			<tr>
+    				<td>{{ i.SkillName }}</td>
+    			</tr>
+    		{% endfor %}
+    	</table>
+    	</div>
+    </div>
+{% endblock %}

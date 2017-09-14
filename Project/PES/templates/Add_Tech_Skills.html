@@ -1,0 +1,28 @@
+{% extends 'Master.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+    <div class="contentpanel  ">
+        <center>
+            <h2>Add Technical Skills</h2>
+        </center>
+		<strong><a href="home" style="font-size:20px">Back</a></strong>
+        <form id="Register" method="post" class="for" enctype="multipart/form-data" action="techskills">
+            <table class="table dataTable col-md-4">
+                <tr>
+                    <td>Technical Skill Name: </td>
+                    <td><input type="text" name="tskill"/></td>
+                </tr>
+                <tr>
+                	<td colspan="2">
+                    <center>
+                            <input type="submit" name="Add" value="Submit" class="btn btn-primary" />
+                            <input type="reset" value="Reset" class="btn btn-primary" />
+                    </center>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+{% endblock %}

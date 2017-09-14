@@ -1,0 +1,27 @@
+{% extends 'Master_Employee.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+<center>
+    <h2>Skills Review</h2>
+</center>
+<div class="contentpanel" align="center">
+    <div>
+    <table border="1" width="50%">
+        <tr>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for i in mgr %}
+            <tr>
+                <td>{{ i.Name }}</td>
+                <td><a href="revskill={{i.Employee_id}}">Review Skills</a></td>
+                <td><a href="revaddskill={{i.Employee_id}}">Review Additional Skills</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+</div>
+{% endblock %}

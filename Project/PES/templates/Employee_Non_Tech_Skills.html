@@ -1,0 +1,25 @@
+{% extends 'Master_Employee.html' %}
+{% block session %}
+{{user}}
+{% endblock  %}
+{%block divbody %}
+<center>
+    <h2>Non-Technical Skills List</h2>
+</center>
+	<div class="contentpanel" align="center">
+    	<div>
+    	<table border="1" width="50%">
+    		<tr>
+				<th>Non-Technical Skills</th>
+				<!-- <th>Threshold</th> -->
+    		</tr>
+    		{% for i in sk %}
+    			<tr>
+                    <td>{{ i.SkillName }}</td>
+                    <!-- <td>{{ i.Threshold }}</td> -->
+    			</tr>
+    		{% endfor %}
+    	</table>
+    	</div>
+    </div>
+{% endblock %}
